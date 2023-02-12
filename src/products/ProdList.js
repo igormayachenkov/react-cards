@@ -1,7 +1,19 @@
+import { useEffect } from 'react';
 import './Prod.css';
 import ProdCard from './PropCard';
 
-const PropList=()=>{
+const PropList=({data})=>{
+
+    useEffect( ()=>{
+        data.loadProductTree()
+        .then(root=>{
+            console.log('*** DATA ***',root)
+        })
+        .catch(error=>{
+            console.log('*** DATA ERROR ***',error)
+        })
+    },[])
+
     return <div className="prod-list">
         <ProdCard title="Product One"/>
         <ProdCard title="Product Two"/>

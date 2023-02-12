@@ -1,6 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import PropList from './products/ProdList';
+import api from './data/api'
+import Data from './data/middleware';
+
+const data = new Data(api)
 
 function App() {
   return (
@@ -11,7 +15,7 @@ function App() {
       </header>
 
       <div id="layout-list">
-        <PropList />
+        <PropList data={data}/>
       </div>
 
     </div>
