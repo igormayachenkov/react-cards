@@ -1,0 +1,14 @@
+.prod-list{
+    padding:1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px,1fr));
+    justify-content: space-around;
+    grid-gap: 0.3em;
+}
+.prod-card{
+    background: yellowgreen;
+    margin: 0em;
+    padding: 0.5em;
+    border-radius: 5px;
+    position: relative;
+}
