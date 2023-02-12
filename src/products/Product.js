@@ -22,9 +22,10 @@ const Product=({product})=>{
     
     // ----- RENDER -----
     console.log(`=> Product, expanded:${expanded} transitioning:${transitioning} height:${height}`);
-    return <div className="prod-card"><div className='card-body'>
+    return <div className="product"><div className='card-body'>
         
-        <div>{product.Name}</div>
+        <div className='name' >{product.Name}</div>
+        <div className='descr'>{product.descriptionen}</div>
 
         <div className='actions-area'>
             {product.children.length>0 &&
