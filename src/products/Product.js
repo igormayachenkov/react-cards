@@ -1,6 +1,7 @@
 import React,{useState, useRef} from 'react';
+import SubProduct from './SubProduct';
 
-const ProdCard=({title})=>{
+const Product=({product})=>{
     const [expanded,      setExpanded]      = useState(false) 
     const [transitioning, setTransitioning] = useState(false) 
     const [height,        setHeight]        = useState(0) 
@@ -19,27 +20,30 @@ const ProdCard=({title})=>{
     }
      
     
-    // RENDER
-    console.log(`=> ProdCard, expanded:${expanded} transitioning:${transitioning} height:${height}`);
+    // ----- RENDER -----
+    console.log(`=> Product, expanded:${expanded} transitioning:${transitioning} height:${height}`);
     return <div className="prod-card"><div className='card-body'>
         
-        <div>{title}</div>
+        <div>{product.Name}</div>
 
-        <div className='actions-area'><span 
-            className='expand-button'
-            onClick={handleExpandButton}>
-            {expanded?'collapse':'expand'}
-        </span></div>
+        <div className='actions-area'>
+            {product.children.length>0 &&
+                <span className='expand-button'
+                    onClick={handleExpandButton}>
+                    {expanded?'collapse':`${product.children.length} subproducts`}
+                </span>
+            }
+        </div>
 
         <div className = {`details ${expanded?'expanded':'collapsed'}`} 
-        style={expanded?{height:height+'px'}:null} 
-        onTransitionEnd={handleTransitionEnd}>
+            style={expanded?{height:height+'px'}:null} 
+            onTransitionEnd={handleTransitionEnd}>
             <div ref={content}>
-                The details field long content
+                {product.children.map(item=><SubProduct key={item.ProductID} product={item}/>)}
             </div>
         </div>
         
     </div></div>
 
 }
-export default ProdCard;
+export default Product;

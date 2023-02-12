@@ -1,25 +1,26 @@
 .prod-list{
-    padding:1em;
+    padding:0.2em;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(15em,1fr));
     justify-content: space-around;
     grid-gap: 0.3em;
 }
+
 .prod-card{
     background: yellowgreen;
     margin: 0em;
-    padding: 0.5em;
+    padding: 0em;
     border-radius: 5px;
 }
 .prod-card .details{
     background-color: #88888888;
-    padding: 0em 0.8em;
+    padding: 0em 0em;
     overflow-y: hidden;
     transition-duration: 0.5s;
     transition-property: height;  
 }
-.prod-card .details.expanded{
-}
+/*.prod-card .details.expanded{
+}*/
 .prod-card .details.collapsed{
     height: 0px;
 }
@@ -27,14 +28,24 @@
 .actions-area{
     text-align: right;
     padding: 0.3em 0em;
+    font-family: monospace;
+    font-size: 90%;
 }
-.expand-button{
+.actions-area .expand-button{
     cursor: pointer;
     padding: 0.3em;
     border-radius: 3px;
 }
-.expand-button:hover{
+.actions-area .expand-button:hover{
     color:blue;
+}
+
+.subproduct {
+    padding: 0em 0.5em 0.2em 0.5em;
+    border-bottom: 1px solid #444;
+}
+.subproduct:last-child{
+    border-bottom: none;
 }
 
 
