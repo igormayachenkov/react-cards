@@ -22,14 +22,22 @@ const ProdList=({data})=>{
     //----- RENDER -----
     return <div className="prod-list">
         {products && 
-            <>{products.map(prod=><Product key={prod.ProductID} product={prod}/>)}</>
+            <>{products.map(prod=><Product key={prod.id} product={prod}/>)}</>
         }
-
 
         {(!products&&!error)&& 
             createPortal(
                 <div className='fog'>
                     <div className="message">Loading data...</div>
+                </div>,
+                document.body
+            )
+        }
+
+        {error!=null && 
+            createPortal(
+                <div className='fog'>
+                    <div className="message">{error.toString()}</div>
                 </div>,
                 document.body
             )

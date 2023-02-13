@@ -24,8 +24,8 @@ const Product=({product})=>{
     console.log(`=> Product, expanded:${expanded} transitioning:${transitioning} height:${height}`);
     return <div className="product"><div className='card-body'>
         
-        <div className='name' >{product.Name}</div>
-        <div className='descr'>{product.descriptionen}</div>
+        <div className='name' >{product.name}</div>
+        <div className='descr'>{product.descr}</div>
 
         <div className='actions-area'>
             {product.children.length>0 &&
@@ -40,7 +40,7 @@ const Product=({product})=>{
             style={expanded?{height:height+'px'}:null} 
             onTransitionEnd={handleTransitionEnd}>
             <div ref={content}>
-                {product.children.map(item=><SubProduct key={item.ProductID} product={item}/>)}
+                {product.children.map(item=><SubProduct key={item.id} product={item}/>)}
             </div>
         </div>
         

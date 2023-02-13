@@ -1,8 +1,8 @@
 const SubProduct = ({product})=>{
     return <div className="subproduct">
-        <div className='name' >{product.Name}</div>
-        <div className='type' >{product.Type}</div>
-        <div className='descr'>{product.descriptionen}</div>
+        <div className='name' >{product.name}</div>
+        <div className='type' >{product.type}</div>
+        <div className='descr'>{product.descr}</div>
     </div>
 }
 export default SubProduct
