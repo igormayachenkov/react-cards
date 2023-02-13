@@ -6,6 +6,7 @@
     "url": "github:igormayachenkov/react-cards"
   },
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
