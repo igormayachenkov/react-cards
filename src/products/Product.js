@@ -1,50 +1,44 @@
 import React,{useState, useRef} from 'react';
 import SubProduct from './SubProduct';
+import {Card,CardHeader,CardContent,CardActions,Collapse,Button} from '@mui/material';
+
 
 const Product=({product})=>{
     const [expanded,      setExpanded]      = useState(false) 
-    const [transitioning, setTransitioning] = useState(false) 
-    const [height,        setHeight]        = useState(0) 
-    const content = useRef()
 
     const handleExpandButton=()=>{
-        console.log('handleExpandButton',content.current?.clientHeight)
-        if(content.current)
-          setHeight(content.current.clientHeight)
+        console.log('handleExpandButton')
         setExpanded(!expanded)
-        setTransitioning(true)
     }
-    const handleTransitionEnd = (event) => {
-        console.log('transition end');
-        setTransitioning(false)
-    }
-     
     
     // ----- RENDER -----
-    console.log(`=> Product, expanded:${expanded} transitioning:${transitioning} height:${height}`);
-    return <div className="product"><div className='card-body'>
-        
-        <div className='name' >{product.name}</div>
-        <div className='descr'>{product.descr}</div>
+    console.log(`=> Product, expanded:${expanded}`);
+    return <Card variant="outlined" sx={{backgroundColor:'yellowgreen'}}>
+        <CardHeader 
+            title={product.name}
+            sx={{paddingBottom:0}}/>
+        <CardContent
+            sx={{paddingTop:0,paddingBottom:0}}>
+            {product.descr}
+        </CardContent>
 
-        <div className='actions-area'>
+        <CardActions disableSpacing>
             {product.children.length>0 &&
-                <span className='expand-button'
+                <Button sx={{color:'darkblue'}}
                     onClick={handleExpandButton}>
                     {expanded?'collapse':`${product.children.length} subproducts`}
-                </span>
+                </Button>
             }
-        </div>
-
-        <div className = {`details ${expanded?'expanded':'collapsed'}`} 
-            style={expanded?{height:height+'px'}:null} 
-            onTransitionEnd={handleTransitionEnd}>
-            <div ref={content}>
-                {product.children.map(item=><SubProduct key={item.id} product={item}/>)}
-            </div>
-        </div>
+        </CardActions>
         
-    </div></div>
+        <Collapse in={expanded} timeout="auto" unmountOnExit
+            sx={{ backgroundColor: '#88888888'}}>
+            {product.children.map(item=><SubProduct key={item.id} product={item}/>)}
+        </Collapse>
+
+
+
+    </Card>
 
 }
 export default Product;

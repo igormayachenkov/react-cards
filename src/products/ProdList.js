@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import './Prod.css';
 import Product from './Product';
+import { Box } from "@mui/material"
 
 const ProdList=({data})=>{
     const [products, setProducts] = useState(null)
@@ -20,7 +20,11 @@ const ProdList=({data})=>{
     },[])
 
     //----- RENDER -----
-    return <div className="prod-list">
+    return <Box sx={{
+        display:'grid', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(15em,1fr))',
+        gridGap:'0.2em'}}>
+        
         {products && 
             <>{products.map(prod=><Product key={prod.id} product={prod}/>)}</>
         }
@@ -43,7 +47,7 @@ const ProdList=({data})=>{
             )
         }
 
-    </div>
+    </Box>
 }
 
 export default ProdList;
