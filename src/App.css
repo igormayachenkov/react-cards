@@ -10,7 +10,7 @@
 header       {grid-area: header; }/*background: #282c34;*/
 #layout-list {grid-area: list;   overflow-y: auto; padding: 0.2em;}
 .App{
-    grid-template-rows:    2em 1fr;
+    grid-template-rows:    3em 1fr;
     grid-template-columns: 1fr;
     grid-template-areas: 
     "header"
@@ -45,6 +45,7 @@ header{
   color: white;
 }
 header .title{
+  font-size: 105%;
   font-weight: bold;
 }
 header .repo{

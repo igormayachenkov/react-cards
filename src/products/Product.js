@@ -13,7 +13,11 @@ const Product=({product})=>{
     
     // ----- RENDER -----
     console.log(`=> Product, expanded:${expanded}`);
-    return <Card variant="outlined" sx={{backgroundColor:'yellowgreen'}}>
+    return <Card variant="outlined" 
+        sx={{
+            backgroundColor:'lightgray',
+            color:'#000'
+        }}>
         <CardHeader 
             title={product.name}
             sx={{paddingBottom:0}}/>
@@ -32,7 +36,7 @@ const Product=({product})=>{
         </CardActions>
         
         <Collapse in={expanded} timeout="auto" unmountOnExit
-            sx={{ backgroundColor: '#88888888'}}>
+            sx={{ backgroundColor: '#00000020'}}>
             {product.children.map(item=><SubProduct key={item.id} product={item}/>)}
         </Collapse>
 
